@@ -1,0 +1,1 @@
+sheet to plan your race (sim or real) with some 1+ drivers, with a race determined by laps
