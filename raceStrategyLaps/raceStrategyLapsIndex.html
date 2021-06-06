@@ -13,13 +13,22 @@
             <table>
                 <tr>
                     <th colspan="3">Race Information</th>
-                    <th>Race Strategy</th>
+                    <th colspan="5">Race Strategy</th>
                 </tr>
                 <tr>
                     <th>Track Information</th>
                     <th>Value</th>
                     <th>Unit</th>
                     <th>Stints</th>
+                    <th>Lap In</th>
+                    <th>Fuel added</th>
+                    <th>Driver</th>
+                    <th>Tire Set</th>
+                    <th>Stint Laps</th>
+                    <th>Fuel (Start)</th>
+                    <th>Fuel (End)</th>
+
+
                 </tr>
                 <tr>
                     <td>Track Length</td>
@@ -27,6 +36,27 @@
                         <input type="number">
                     </td>
                     <td>km</td>
+                    <td>Stint 1</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <select name="Driver" id="">
+                            <option value="Ninja">Ninja</option>
+                            <option value="Letas">Letas</option>
+                            <option value="Jalves">Jalves</option>
+                        </select>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>Race Total Length</td>
@@ -34,6 +64,27 @@
                         <input type="number">
                     </td>
                     <td>km</td>
+                    <td>Stint 2</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <select name="Driver" id="">
+                            <option value="Ninja">Ninja</option>
+                            <option value="Letas">Letas</option>
+                            <option value="Jalves">Jalves</option>
+                        </select>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>Race Maximum Time</td>
@@ -41,6 +92,27 @@
                         <input type="time" name="" id="">
                     </td>
                     <td>hh:mm</td>
+                    <td>Stint 3</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <select name="Driver" id="">
+                            <option value="Ninja">Ninja</option>
+                            <option value="Letas">Letas</option>
+                            <option value="Jalves">Jalves</option>
+                        </select>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>Drivers Minimum Laps</td>
@@ -48,6 +120,27 @@
                         <input type="number">
                     </td>
                     <td>Laps</td>
+                    <td>Stint 4</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <select name="Driver" id="">
+                            <option value="Ninja">Ninja</option>
+                            <option value="Letas">Letas</option>
+                            <option value="Jalves">Jalves</option>
+                        </select>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>Required PitStops</td>
@@ -55,111 +148,547 @@
                         <input type="Number">
                     </td>
                     <td>Stops</td>
+                    <td>Stint 5</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <select name="Driver" id="">
+                            <option value="Ninja">Ninja</option>
+                            <option value="Letas">Letas</option>
+                            <option value="Jalves">Jalves</option>
+                        </select>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>Time Penalty</td>
                     <td>
                         <input type="time" step='1'>
                     </td>
+                    <td></td>
+                    <td>Stint 6</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <select name="Driver" id="">
+                            <option value="Ninja">Ninja</option>
+                            <option value="Letas">Letas</option>
+                            <option value="Jalves">Jalves</option>
+                        </select>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>Extra Pitstop</td>
                     <td>
                         <input type="time" step='1'>
                     </td>
+                    <td></td>
+                    <td>Stint 7</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <select name="Driver" id="">
+                            <option value="Ninja">Ninja</option>
+                            <option value="Letas">Letas</option>
+                            <option value="Jalves">Jalves</option>
+                        </select>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>Tire Change Pitstop</td>
                     <td>
                         <input type="time" step='1'>
                     </td>
+                    <td></td>
+                    <td>Stint 8</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <select name="Driver" id="">
+                            <option value="Ninja">Ninja</option>
+                            <option value="Letas">Letas</option>
+                            <option value="Jalves">Jalves</option>
+                        </select>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
-                    <th>Estimated Times</th>
+                    <th colspan="3">Estimated Times</th>
+                    <td>Stint 9</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <select name="Driver" id="">
+                            <option value="Ninja">Ninja</option>
+                            <option value="Letas">Letas</option>
+                            <option value="Jalves">Jalves</option>
+                        </select>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>First Lap Time</td>
                     <td>
                         <input type="time" step='1'>
                     </td>
+                    <td></td>
+                    <td>Stint 10</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <select name="Driver" id="">
+                            <option value="Ninja">Ninja</option>
+                            <option value="Letas">Letas</option>
+                            <option value="Jalves">Jalves</option>
+                        </select>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>Race Pace (Leader)</td>
                     <td>
                         <input type="time" step='1'>
                     </td>
+                    <td></td>
+                    <td>Stint 11</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <select name="Driver" id="">
+                            <option value="Ninja">Ninja</option>
+                            <option value="Letas">Letas</option>
+                            <option value="Jalves">Jalves</option>
+                        </select>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>In Lap Time (Leader)</td>
                     <td>
                         <input type="time" step='1'>
                     </td>
+                    <td></td>
+                    <td>Stint 12</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <select name="Driver" id="">
+                            <option value="Ninja">Ninja</option>
+                            <option value="Letas">Letas</option>
+                            <option value="Jalves">Jalves</option>
+                        </select>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>Out Lap Time (Leader)</td>
                     <td>
                         <input type="time" step='1'>
                     </td>
+                    <td></td>
+                    <td>Stint 13</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <select name="Driver" id="">
+                            <option value="Ninja">Ninja</option>
+                            <option value="Letas">Letas</option>
+                            <option value="Jalves">Jalves</option>
+                        </select>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>Average Race Pace</td>
                     <td>
                         <input type="time" step='1'>
                     </td>
+                    <td></td>
+                    <td>Stint 14</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <select name="Driver" id="">
+                            <option value="Ninja">Ninja</option>
+                            <option value="Letas">Letas</option>
+                            <option value="Jalves">Jalves</option>
+                        </select>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>In Lap</td>
                     <td>
                         <input type="time" step='1'>
                     </td>
+                    <td></td>
+                    <td>Stint 15</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <select name="Driver" id="">
+                            <option value="Ninja">Ninja</option>
+                            <option value="Letas">Letas</option>
+                            <option value="Jalves">Jalves</option>
+                        </select>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>Out Lap</td>
                     <td>
                         <input type="time" step='1'>
                     </td>
+                    <td></td>
+                    <td>Stint 16</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <select name="Driver" id="">
+                            <option value="Ninja">Ninja</option>
+                            <option value="Letas">Letas</option>
+                            <option value="Jalves">Jalves</option>
+                        </select>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>Safety Car Lap</td>
                     <td>
                         <input type="time" step='1'>
                     </td>
+                    <td></td>
+                    <td>Stint 17</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <select name="Driver" id="">
+                            <option value="Ninja">Ninja</option>
+                            <option value="Letas">Letas</option>
+                            <option value="Jalves">Jalves</option>
+                        </select>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>Rain Lap</td>
                     <td>
                         <input type="time" step='1'>
                     </td>
+                    <td></td>
+                    <td>Stint 18</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <select name="Driver" id="">
+                            <option value="Ninja">Ninja</option>
+                            <option value="Letas">Letas</option>
+                            <option value="Jalves">Jalves</option>
+                        </select>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
-                    <th>Pit Stop Information</th>
+                    <th colspan="3">Pit Stop Information</th>
+                    <td>Stint 19</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <select name="Driver" id="">
+                            <option value="Ninja">Ninja</option>
+                            <option value="Letas">Letas</option>
+                            <option value="Jalves">Jalves</option>
+                        </select>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>Pitstop total time</td>
                     <td>
                         <input type="time" step='1'>
                     </td>
+                    <td></td>
+                    <td>Stint 20</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <select name="Driver" id="">
+                            <option value="Ninja">Ninja</option>
+                            <option value="Letas">Letas</option>
+                            <option value="Jalves">Jalves</option>
+                        </select>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>Pit entry to pitbox</td>
                     <td>
                         <input type="time" step='1'>
                     </td>
+                    <td></td>
+                    <td>Stint 21</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <select name="Driver" id="">
+                            <option value="Ninja">Ninja</option>
+                            <option value="Letas">Letas</option>
+                            <option value="Jalves">Jalves</option>
+                        </select>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>pitbox to exit</td>
                     <td>
                         <input type="time" step='1'>
                     </td>
+                    <td></td>
+                    <td>Stint 22</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <select name="Driver" id="">
+                            <option value="Ninja">Ninja</option>
+                            <option value="Letas">Letas</option>
+                            <option value="Jalves">Jalves</option>
+                        </select>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>Time on track (pitlane)</td>
                     <td>
                         <input type="time" step='1'>
                     </td>
+                    <td></td>
+                    <td>Stint 23</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <select name="Driver" id="">
+                            <option value="Ninja">Ninja</option>
+                            <option value="Letas">Letas</option>
+                            <option value="Jalves">Jalves</option>
+                        </select>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
-                    <th>Fuel Consumption</th>
+                    <th colspan="3">Fuel Consumption</th>
+                    <td>Stint 24</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <select name="Driver" id="">
+                            <option value="Ninja">Ninja</option>
+                            <option value="Letas">Letas</option>
+                            <option value="Jalves">Jalves</option>
+                        </select>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>Race Lap</td>
@@ -167,6 +696,27 @@
                         <input type="number">
                     </td>
                     <td>Liters</td>
+                    <td>Stint 25</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <select name="Driver" id="">
+                            <option value="Ninja">Ninja</option>
+                            <option value="Letas">Letas</option>
+                            <option value="Jalves">Jalves</option>
+                        </select>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>Lap to grid</td>
@@ -174,6 +724,27 @@
                         <input type="number">
                     </td>
                     <td>Liters</td>
+                    <td>Stint 26</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <select name="Driver" id="">
+                            <option value="Ninja">Ninja</option>
+                            <option value="Letas">Letas</option>
+                            <option value="Jalves">Jalves</option>
+                        </select>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>Formation Lap</td>
@@ -181,6 +752,27 @@
                         <input type="number">
                     </td>
                     <td>Liters</td>
+                    <td>Stint 27</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <select name="Driver" id="">
+                            <option value="Ninja">Ninja</option>
+                            <option value="Letas">Letas</option>
+                            <option value="Jalves">Jalves</option>
+                        </select>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>In Lap</td>
@@ -188,6 +780,27 @@
                         <input type="number">
                     </td>
                     <td>Liters</td>
+                    <td>Stint 28</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <select name="Driver" id="">
+                            <option value="Ninja">Ninja</option>
+                            <option value="Letas">Letas</option>
+                            <option value="Jalves">Jalves</option>
+                        </select>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>Out Lap</td>
@@ -195,6 +808,27 @@
                         <input type="number">
                     </td>
                     <td>Liters</td>
+                    <td>Stint 29</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <select name="Driver" id="">
+                            <option value="Ninja">Ninja</option>
+                            <option value="Letas">Letas</option>
+                            <option value="Jalves">Jalves</option>
+                        </select>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>Behind Safety Car</td>
@@ -202,6 +836,27 @@
                         <input type="number">
                     </td>
                     <td>Liters</td>
+                    <td>Stint 30</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <select name="Driver" id="">
+                            <option value="Ninja">Ninja</option>
+                            <option value="Letas">Letas</option>
+                            <option value="Jalves">Jalves</option>
+                        </select>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>Fuel Tank Volume</td>
@@ -209,6 +864,27 @@
                         <input type="number">
                     </td>
                     <td>Liters</td>
+                    <td>Stint 31</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <select name="Driver" id="">
+                            <option value="Ninja">Ninja</option>
+                            <option value="Letas">Letas</option>
+                            <option value="Jalves">Jalves</option>
+                        </select>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>Fuel Safety Margin</td>
@@ -216,6 +892,235 @@
                         <input type="number">
                     </td>
                     <td>Liters</td>
+                    <td>Stint 32</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <select name="Driver" id="">
+                            <option value="Ninja">Ninja</option>
+                            <option value="Letas">Letas</option>
+                            <option value="Jalves">Jalves</option>
+                        </select>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Stint 33</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <select name="Driver" id="">
+                            <option value="Ninja">Ninja</option>
+                            <option value="Letas">Letas</option>
+                            <option value="Jalves">Jalves</option>
+                        </select>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Stint 34</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <select name="Driver" id="">
+                            <option value="Ninja">Ninja</option>
+                            <option value="Letas">Letas</option>
+                            <option value="Jalves">Jalves</option>
+                        </select>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Stint 35</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <select name="Driver" id="">
+                            <option value="Ninja">Ninja</option>
+                            <option value="Letas">Letas</option>
+                            <option value="Jalves">Jalves</option>
+                        </select>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Stint 36</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <select name="Driver" id="">
+                            <option value="Ninja">Ninja</option>
+                            <option value="Letas">Letas</option>
+                            <option value="Jalves">Jalves</option>
+                        </select>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Stint 37</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <select name="Driver" id="">
+                            <option value="Ninja">Ninja</option>
+                            <option value="Letas">Letas</option>
+                            <option value="Jalves">Jalves</option>
+                        </select>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Stint 38</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <select name="Driver" id="">
+                            <option value="Ninja">Ninja</option>
+                            <option value="Letas">Letas</option>
+                            <option value="Jalves">Jalves</option>
+                        </select>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Stint 39</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <select name="Driver" id="">
+                            <option value="Ninja">Ninja</option>
+                            <option value="Letas">Letas</option>
+                            <option value="Jalves">Jalves</option>
+                        </select>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Stint 40</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <select name="Driver" id="">
+                            <option value="Ninja">Ninja</option>
+                            <option value="Letas">Letas</option>
+                            <option value="Jalves">Jalves</option>
+                        </select>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
             </table>
         </div>
