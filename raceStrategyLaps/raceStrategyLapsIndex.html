@@ -9,7 +9,7 @@
 
     </head>
     <body>
-        <div class = "raceInfo">
+        <div id = "raceInfoTable">
             <table>
                 <tr>
                     <th colspan="3">Race Information</th>
@@ -235,7 +235,7 @@
             </table>
         </div>
 
-        <div class="raceStrategy">
+        <div id="raceStrategytable">
             <table>
                 <tr>
                     <th colspan="5">Race Strategy</th>
@@ -243,10 +243,10 @@
                 <tr>
                     <td>Stints Quantity</td>
                     <td>
-                        <input type="number">
+                        <input type="number" id="stintsNumber" value="3">
                     </td>
                     <td>
-                        <button>Stints</button>
+                        <button onclick="addStints()">Stints</button>
                     </td>
                 </tr>
                 <tr>
@@ -258,8 +258,8 @@
                 </tr>
                 <tr>
                     <td>Stint 40</td>
-                    <td></td>
-                    <td></td>
+                    <td><input type="number"></td>
+                    <td><input type="number"></td>
                     <td>
                         <select name="Driver" id="">
                             <option value="Ninja">Ninja</option>
@@ -277,7 +277,7 @@
                 </tr>
             </table>
         </div>
-        <div class="pitStopStrategy">
+        <div id="pitStopStrategyTable">
             <table>
                 <tr>
                     <th colspan="3">PitStop Strategy</th>

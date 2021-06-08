@@ -3,17 +3,17 @@ table, th, td{
     }
 
 
-.raceInfo{
+#raceInfoTable{
     position: static;
     float: left;
 }
 
-.raceStrategy{
+#raceStrategyTable{
     position: static;
     float: left;
 }
 
-.pitStopStrategy{
+#pitStopStrategyTable{
     position: static;
     float: left;
 }
