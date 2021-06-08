@@ -1,3 +1,19 @@
 table, th, td{
     border: 1px solid black;
+    }
+
+
+.raceInfo{
+    position: static;
+    float: left;
+}
+
+.raceStrategy{
+    position: static;
+    float: left;
+}
+
+.pitStopStrategy{
+    position: static;
+    float: left;
 }
