@@ -2,9 +2,9 @@
 
 
 function addStints() {
-    var table = document.getElementById('raceStrategytable');
+    var table = document.getElementById('raceStrategyTable');
     var rows = parseInt(document.getElementById('stintsNumber').value);
-    for (var i = 1; i <= rows; i++){
+    for (var i = 1; i <= rows; i++) {
         var tr = document.createElement('tr');
         var cell1 = document.createElement('td');
         var cell2 = document.createElement('td');
