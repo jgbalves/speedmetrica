@@ -19,12 +19,16 @@ function addStints() {
         input3.type = "number";
         input4.type = "number";
         input5.type = "number";
-        input2.placeholder = 2;
         cell1.innerHTML = i.toString();
-        cell2.appendChild(input2);
+        cell2.appendChild(input2); 
         cell3.appendChild(input3);
         cell4.appendChild(input4);
         cell5.appendChild(input5);
+        tr.appendChild(cell1);
+        tr.appendChild(cell2);
+        tr.appendChild(cell3);
+        tr.appendChild(cell4);
+        tr.appendChild(cell5);
         table.appendChild(tr);        
 
     }

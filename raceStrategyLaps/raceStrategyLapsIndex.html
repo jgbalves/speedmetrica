@@ -235,8 +235,8 @@
             </table>
         </div>
 
-        <div id="raceStrategytable">
-            <table>
+        <div id="raceStrategydiv">
+            <table id="raceStrategyTable">
                 <tr>
                     <th colspan="5">Race Strategy</th>
                 </tr>
@@ -246,7 +246,7 @@
                         <input type="number" id="stintsNumber" value="3">
                     </td>
                     <td>
-                        <button onclick="addStints()">Stints</button>
+                        <button type="button" onclick="addStints()">Stints</button>
                     </td>
                 </tr>
                 <tr>
@@ -288,6 +288,34 @@
                     <th>Fuel (End)</th>
                 </tr>
             </table>
+        </div>
+        <div>
+            <form>
+                Number of rows to be generated<br>
+                <input type="number" min="1" id="table-row-num" value="3" required="required">
+                <button type="button" onclick="addRows()">Submit</button>
+            </form>
+                
+                
+                <div id="table-gen">
+                    <p>Table generated here after clicking submit</p>
+                    <table cellpadding="1" cellspacing="1" border="1" id="tableElement">
+                      <tr>
+                        <td>1</td>
+                        <td><input type="name" placeholder="text goes here..."></td>
+                        <td><input type="name" placeholder="text goes here..."></td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td><input type="name" placeholder="text goes here..."></td>
+                        <td><input type="name" placeholder="text goes here..."></td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td><input type="name" placeholder="text goes here..."></td>
+                        <td><input type="name" placeholder="text goes here..."></td>
+                      </tr>
+                    </table>
         </div>
 
         <script src="raceStrategyLapsIndex.js" charset="UTF-8"></script>
