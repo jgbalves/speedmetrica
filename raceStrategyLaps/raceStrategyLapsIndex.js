@@ -48,3 +48,27 @@ function addStints() {
     }
 
 }
+
+$('#stintsAdder').click(function() {
+    let table = $('#raceStrategyTable');
+    let rowNum = parseInt($('StintsNumber').val(), 10);
+    let resultHtml = '';
+
+    for (let i = 0; i < rowNum; i++){
+        resultHtml += [
+            "<tr>",
+            "<td>",
+            ("Stint" + i+1),
+            "</td>",
+            '<td><input type="number"></td>',
+            '<td><input type="number"></td>',
+            '<td><input type="number"></td>',
+            '<td><select name="Driver" id=""></select></td>',
+            '<td><select name="Set" id=""></select></td>',
+            '</tr>'
+        ].join("\n");
+    }
+    table.html(resultHtml);
+        return false;
+}
+);
