@@ -24,7 +24,7 @@ $('#stintsAdder').click(function() {
         resultHtml += [
             "<tr>",
             "<td>",
-            ("Stint " + i+ parseInt(1, 10)),
+            ("Stint " + parseInt(i + 1, 10)),
             "</td>",
             '<td><input type="number"></td>',
             '<td><input type="number"></td>',
@@ -35,7 +35,7 @@ $('#stintsAdder').click(function() {
                 '<option value="Jalves">Jalves</option>',
             '</select>',
             '</td>',
-            '<td><select name="Set" id=""></select></td>',
+            '<td><select name="Set" id="tyreSetSelect"></select></td>',
             '</tr>'
         ].join("\n");
     }
@@ -43,3 +43,16 @@ $('#stintsAdder').click(function() {
         return false;
 }
 );
+
+/*
+$.each(tyreSets, function(key, value) {
+    $('#tyreSetSelect').append($('<option>', {value: key}).text(value));
+}
+);
+*/
+
+$.each(tyreSets, function(key, value) {
+    $('#tyreSetSelect')
+         .append($('<option>', { value : key })
+         .text(value));
+});
