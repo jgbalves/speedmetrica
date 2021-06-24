@@ -56,3 +56,11 @@ $.each(tyreSets, function(key, value) {
          .append($('<option>', { value : key })
          .text(value));
 });
+
+function raceLaps()
+{
+    raceLengthVal = $('#raceLengthVal').val();
+    trackLengthVal = $('#trackLengthVal').val();
+    $('#raceLapsMax').innerHTML = raceLengthVal / trackLengthVal;
+
+}
