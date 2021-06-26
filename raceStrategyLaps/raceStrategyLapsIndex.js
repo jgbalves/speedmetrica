@@ -51,16 +51,39 @@ $.each(tyreSets, function(key, value) {
 );
 */
 
+
+
 $.each(tyreSets, function(key, value) {
     $('#tyreSetSelect')
          .append($('<option>', { value : key })
          .text(value));
 });
+/*
+$('#trackLengthVal').change(
+    function(){
+        let table = $('#racePlanTable');
+        let rowNum = $('#trackLengthVal').val();
+        let resultHtml = [
+                "<tr>",
+                    '<th colspan="5">Race Plan</th>',
+                '</tr>',
+                '<tr>',
+                    '<th>Lap</th>',
+                    '<th>Lap Mode</th>',
+                    '<th>Race Total Time</th>',
+                    '<th>Fuel Added</th>',
+                    '<th>In Tank Fuel</th>',
+                '</tr>',
+                '<tr>',
+                    '<td>1</td>',
+                    '<td>RACE</td>',
+                    '<td>0:14:51,700</td>',
+                    '<td>35L</td>',
+                    '<td>9L</td>',
+                '</tr>',
+        ]
 
-function raceLaps()
-{
-    raceLengthVal = $('#raceLengthVal').val();
-    trackLengthVal = $('#trackLengthVal').val();
-    $('#raceLapsMax').innerHTML = raceLengthVal / trackLengthVal;
-
-}
+        for (let i = 0; )
+    }
+)
+*/
