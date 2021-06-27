@@ -60,7 +60,7 @@ $.each(tyreSets, function(key, value) {
 $('#trackLengthVal').change(
     function(){
         let table = $('#racePlanTable');
-        let lapNum = $('#trackLengthVal').val();
+        let lapNum = Math.ceil($('#raceLengthVal').val() / $('#trackLengthVal').val());
         let resultHtml = [
                 "<tr>",
                     '<th colspan="5">Race Plan</th>',
@@ -75,10 +75,12 @@ $('#trackLengthVal').change(
 
         ]
 
-        for (let laps = 0; laps < lapNum; laps++){
+        for (let i = 0; i < lapNum; i++){
             resultHtml += [
                 '<tr>',
-                '<td>1</td>',
+                '<td>',
+                ("Lap " + parseInt(i, 10)),
+                '</td>',
                 '<td>RACE</td>',
                 '<td>0:14:51,700</td>',
                 '<td>35L</td>',
