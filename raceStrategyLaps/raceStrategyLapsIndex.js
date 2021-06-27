@@ -57,37 +57,38 @@ $.each(tyreSets, function(key, value) {
          .text(value));
 });
 
-$('#trackLengthVal').change(
-    function(){
-        let table = $('#racePlanTable');
-        let lapNum = Math.ceil($('#raceLengthVal').val() / $('#trackLengthVal').val());
-        let resultHtml = [
-                "<tr>",
-                    '<th colspan="5">Race Plan</th>',
-                '</tr>',
-                '<tr>',
-                    '<th>Lap</th>',
-                    '<th>Lap Mode</th>',
-                    '<th>Race Total Time</th>',
-                    '<th>Fuel Added</th>',
-                    '<th>In Tank Fuel</th>',
-                '</tr>',
+function raceLapsCalc(){
+    let table = $('#racePlanTable');
+    let lapNum = Math.ceil($('#raceLengthVal').val() / $('#trackLengthVal').val());
+    let resultHtml = [
+            "<tr>",
+                '<th colspan="5">Race Plan</th>',
+            '</tr>',
+            '<tr>',
+                '<th>Lap</th>',
+                '<th>Lap Mode</th>',
+                '<th>Race Total Time</th>',
+                '<th>Fuel Added</th>',
+                '<th>In Tank Fuel</th>',
+            '</tr>',
 
-        ]
+    ]
 
-        for (let i = 0; i < lapNum; i++){
-            resultHtml += [
-                '<tr>',
-                '<td>',
-                ("Lap " + parseInt(i, 10)),
-                '</td>',
-                '<td>RACE</td>',
-                '<td>0:14:51,700</td>',
-                '<td>35L</td>',
-                '<td>9L</td>',
-                '</tr>',
-            ].join('\n');
-        }table.html(resultHtml);
-            return false;
-    }
-);
+    for (let i = 0; i < lapNum; i++){
+        resultHtml += [
+            '<tr>',
+            '<td>',
+            ("Lap " + parseInt(i, 10)),
+            '</td>',
+            '<td>RACE</td>',
+            '<td>0:14:51,700</td>',
+            '<td>35L</td>',
+            '<td>9L</td>',
+            '</tr>',
+        ].join('\n');
+    }table.html(resultHtml);
+        return false;
+};
+
+$('#trackLengthVal').change(raceLapsCalc)
+$('#raceLengthVal').change(raceLapsCalc)
