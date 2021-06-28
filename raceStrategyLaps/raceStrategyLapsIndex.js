@@ -5,9 +5,9 @@ var drivers = ["Ninja", 'Letas', 'Jalves'];
 var tyreSets = ["Set 1", 'Set 2', 'Set 3'];
 
 //Add stints to Race Strategy table
-$('#stintsAdder').click(function() {
+function stintsResize() {
     let table = $('#raceStrategyTable');
-    let rowNum = parseInt($('#stintsNumber').val(), 10);
+    let rowNum = parseFloat($('#pitStopNum').val(),10) + 1;
     let resultHtml = ["<tr>",
                     '<th colspan="5">Race Strategy</th>',
                     "</tr>",
@@ -41,8 +41,9 @@ $('#stintsAdder').click(function() {
     }
     table.html(resultHtml);
         return false;
-}
-);
+};
+
+$('#pitStopNum').change(stintsResize)
 
 /*
 $.each(tyreSets, function(key, value) {
@@ -57,6 +58,8 @@ $.each(tyreSets, function(key, value) {
          .text(value));
 });
 
+
+//Calculates race laps and adjusts the race table
 function raceLapsCalc(){
     let table = $('#racePlanTable');
     let lapNum = Math.ceil($('#raceLengthVal').val() / $('#trackLengthVal').val());
@@ -78,7 +81,7 @@ function raceLapsCalc(){
         resultHtml += [
             '<tr>',
             '<td>',
-            ("Lap " + parseInt(i, 10)),
+            ("Lap " + parseInt(i+1, 10)),
             '</td>',
             '<td>RACE</td>',
             '<td>0:14:51,700</td>',
