@@ -32,7 +32,13 @@ def main():
     # df['Cornering Grip Factor'] = [i for i in df['Combined G'] if i > 0.5 in df['G Force Lat']]
     df['Cornering Grip Factor'] = np.where(df['G Force Lat'] > 0.5, df['Combined G'], np.nan)
     df['Braking Grip Factor'] = np.where(df['G Force Long'] < -1, df['Combined G'], np.nan)
-    df['Traction Grip Factor'] = np.where([df['G Force Lat'] > 0.5 & df['G Force Long'] > 0], df['Combined G'], np.nan)
+    # df['Traction Grip Factor'] = np.where([df['G Force Lat'] > 0.5 & df['G Force Long'] > 0], df['Combined G'], np.nan)
+    cornering_grip_factor = df[(df['G Force Lat'] > 0.5)]['Combined G'].mean()
+    braking_grip_factor = df[(df['G Force Long'] < -1)]['Combined G'].mean()
+    traction_grip_factor = df[((df['G Force Lat'] > 0.5) & (df['G Force Long'] > 0))]['Combined G'].mean()
+    print(cornering_grip_factor)
+    print(braking_grip_factor)
+    print(traction_grip_factor)
     # df['Aero Grip Factor'] =
     # print(df['Overall Grip Factor'].head(50))
     # print(df.loc[df['Cornering Grip Factor'] == np.nan])
