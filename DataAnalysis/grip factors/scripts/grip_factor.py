@@ -25,6 +25,7 @@ def main():
     outing = pd.read_csv(outing_path, sep=',', low_memory=False, skiprows=13)
     df = outing
     df = df.drop([0], axis=0)
+    df = df.reset_index()
     df['G Force Lat'] = pd.to_numeric(df['G Force Lat'], downcast='float')
     df['G Force Long'] = pd.to_numeric(df['G Force Long'], downcast='float')
     df['Combined G'] = np.sqrt(df['G Force Lat'] ** 2 + df['G Force Long'] ** 2)
@@ -32,15 +33,29 @@ def main():
     # df['Cornering Grip Factor'] = [i for i in df['Combined G'] if i > 0.5 in df['G Force Lat']]
     df['Cornering Grip Factor'] = np.where(df['G Force Lat'] > 0.5, df['Combined G'], np.nan)
     df['Braking Grip Factor'] = np.where(df['G Force Long'] < -1, df['Combined G'], np.nan)
-    # df['Traction Grip Factor'] = np.where([df['G Force Lat'] > 0.5 & df['G Force Long'] > 0], df['Combined G'], np.nan)
+    # df['Traction Grip Factor']= np.where([df['G Force Lat'] > 0.5 & df['G Force Long'] > 0], df['Combined G'], np.nan)
+    overall_grip_factor = df[(df['Combined G'] > 1)]['Combined G'].mean()
     cornering_grip_factor = df[(df['G Force Lat'] > 0.5)]['Combined G'].mean()
     braking_grip_factor = df[(df['G Force Long'] < -1)]['Combined G'].mean()
     traction_grip_factor = df[((df['G Force Lat'] > 0.5) & (df['G Force Long'] > 0))]['Combined G'].mean()
+    print(overall_grip_factor)
     print(cornering_grip_factor)
     print(braking_grip_factor)
     print(traction_grip_factor)
+
+    lap_num = [0]
+
+    for index in range(0, len(df['Lap Distance'])):
+        lap_num_act = lap_num[index]
+        # import pdb; pdb.set_trace()
+        if df['Lap Distance'][df.index[index - 1]] > df['Lap Distance'][df.index[index]]:
+            lap_num.append(lap_num_act + 1)
+        else:
+            lap_num.append(lap_num_act)
+
+    print(lap_num)
+
     # df['Aero Grip Factor'] =
-    # print(df['Overall Grip Factor'].head(50))
     # print(df.loc[df['Cornering Grip Factor'] == np.nan])
     # print(df.loc[df['Overall Grip Factor'] == True])
 
