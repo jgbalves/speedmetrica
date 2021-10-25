@@ -20,16 +20,28 @@ from pathlib import Path
 
 def main():
 
+    # # Inputing data
     outing_csv = 'velocitta_stock.csv'
     outing_path = Path(Path.home(), 'Github', 'speedmetrica', 'DataAnalysis', 'grip factors', 'csv outings', outing_csv)
     outing = pd.read_csv(outing_path, sep=',', low_memory=False, skiprows=13)
     df = outing
+
+    # # Removing motec double header
     df = df.drop([0], axis=0)
     df = df.reset_index()
+
+    # # Converting strings to floats
     df['G Force Lat'] = pd.to_numeric(df['G Force Lat'], downcast='float')
     df['G Force Long'] = pd.to_numeric(df['G Force Long'], downcast='float')
     df['Ground Speed'] = pd.to_numeric(df['Ground Speed'], downcast='float')
     df['Lap Distance'] = pd.to_numeric(df['Lap Distance'], downcast='float')
+
+    # # Cleaning data
+    clean1 = df['G Force Long'] >= -2   # Due to pressing esc in AMS the long G gets noise
+    clean2 = df['G Force Long'] <= 2
+    df = df[clean1 & clean2]
+
+    # # First try of column creation
     df['Combined G'] = np.sqrt(df['G Force Lat'] ** 2 + df['G Force Long'] ** 2)
     df['Overall Grip Factor'] = [i > 1 for i in df['Combined G']]
     # df['Cornering Grip Factor'] = [i for i in df['Combined G'] if i > 0.5 in df['G Force Lat']]
@@ -44,6 +56,7 @@ def main():
     braking_grip_factor = df[(df['G Force Long'] < -1)]['Combined G'].mean()
     traction_grip_factor = df[((df['G Force Lat'] > 0.5) & (df['G Force Long'] > 0))]['Combined G'].mean()
     aero_grip_factor = df[((df['G Force Lat'] > 1) & (df['Ground Speed'] > 120))]['Combined G'].mean()
+
     print(overall_grip_factor)
     print(cornering_grip_factor)
     print(braking_grip_factor)
@@ -61,7 +74,7 @@ def main():
         else:
             lap_num.append(lap_num_prv)
 
-    print(lap_num)
+    df['Lap Distance'] = lap_num
 
     # df['Aero Grip Factor'] =
     # print(df.loc[df['Cornering Grip Factor'] == np.nan])
