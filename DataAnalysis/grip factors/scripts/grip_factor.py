@@ -42,13 +42,15 @@ def main():
     df = df[clean1 & clean2]
 
     # # First try of column creation
-    df['Combined G'] = np.sqrt(df['G Force Lat'] ** 2 + df['G Force Long'] ** 2)
-    df['Overall Grip Factor'] = [i > 1 for i in df['Combined G']]
-    # df['Cornering Grip Factor'] = [i for i in df['Combined G'] if i > 0.5 in df['G Force Lat']]
-    df['Cornering Grip Factor'] = np.where(df['G Force Lat'] > 0.5, df['Combined G'], np.nan)
+    df['Combined G'] = np.sqrt(df['G Force Lat'] ** 2 + df['G Force Long'] ** 2)    # ok
+    df['Overall Grip Factor'] = [i if i > 1 else np.nan for i in df['Combined G']]  # ok
+
+    df['Cornering Grip Factor'] = [i for i in df['Combined G'] if df['G Force Lat'] > 0.5]
+    # df['Cornering Grip Factor'] = np.where(df['G Force Lat'] > 0.5, df['Combined G'], np.nan)
     df['Braking Grip Factor'] = np.where(df['G Force Long'] < -1, df['Combined G'], np.nan)
     # df['Traction Grip Factor']= np.where([df['G Force Lat'] > 0.5 & df['G Force Long'] > 0], df['Combined G'], np.nan)
-
+    print(df['Overall Grip Factor'].mean())
+    print(df['Cornering Grip Factor'].mean())
     # # This part works (But I want columns to apply pivot table all at once)
 
     overall_grip_factor = df[(df['Combined G'] > 1)]['Combined G'].mean()
