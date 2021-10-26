@@ -16,6 +16,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from pathlib import Path
+import plotly.express as px
 
 
 def main():
@@ -31,23 +32,23 @@ def main():
     df = df.reset_index()
 
     # # Converting strings to floats
-    df['G Force Lat'] = pd.to_numeric(df['G Force Lat'], downcast='float')
+    df['G Force Lat'] = np.sqrt((pd.to_numeric(df['G Force Lat'], downcast='float')) ** 2)
     df['G Force Long'] = pd.to_numeric(df['G Force Long'], downcast='float')
     df['Ground Speed'] = pd.to_numeric(df['Ground Speed'], downcast='float')
     df['Lap Distance'] = pd.to_numeric(df['Lap Distance'], downcast='float')
 
     # # Cleaning data
-    clean1 = df['G Force Long'] >= -2   # Due to pressing esc in AMS the long G gets noise
+    clean1 = df['G Force Long'] >= -2   # Due to pressing ESC in AMS the long G gets noise
     clean2 = df['G Force Long'] <= 2
     df = df[clean1 & clean2]
 
     # # First try of column creation
     df['Combined G'] = np.sqrt(df['G Force Lat'] ** 2 + df['G Force Long'] ** 2)    # ok
     df['Overall Grip Factor'] = np.where(df['Combined G'] > 1, df['Combined G'], np.nan)   # ok
-    df['Cornering Grip Factor'] = np.where(df['G Force Lat'] > 0.5, df['Combined G'], np.nan)   # ok
-    df['Braking Grip Factor'] = np.where(df['G Force Long'] < -1, df['Combined G'], np.nan)
+    df['Cornering Grip Factor'] = np.where(df['G Force Lat'] > 0.5, df['Combined G'], np.nan)   # LatG > 0.5
+    df['Braking Grip Factor'] = np.where(df['G Force Long'] > 1, df['Combined G'], np.nan)   # LongG > 1
     df['Traction Grip Factor'] = np.where(
-        (df['G Force Lat'] > 0.5) & (df['G Force Long'] > 0), df['Combined G'], np.nan
+        (df['G Force Lat'] > 0.5) & (df['G Force Long'] < 0), df['Combined G'], np.nan
     )
     df['Aero Grip Factor'] = np.where((df['G Force Lat'] > 1) & (df['Ground Speed'] > 120), df['Combined G'], np.nan)
 
@@ -87,8 +88,20 @@ def main():
 
     df['Lap Number'] = lap_num
 
-    result = df.groupby(['Lap Number']).mean()
+    columns = [
+        'Overall Grip Factor',
+        'Cornering Grip Factor',
+        'Braking Grip Factor',
+        'Traction Grip Factor',
+        'Aero Grip Factor'
+    ]
+
+    result = df.groupby(['Lap Number'])[columns].mean()
+
     print(result)
+
+    fig = px.line(result)
+    fig.show()
 
 
 if __name__ == '__main__':
