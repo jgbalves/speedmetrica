@@ -43,14 +43,23 @@ def main():
 
     # # First try of column creation
     df['Combined G'] = np.sqrt(df['G Force Lat'] ** 2 + df['G Force Long'] ** 2)    # ok
-    df['Overall Grip Factor'] = [i if i > 1 else np.nan for i in df['Combined G']]  # ok
-
-    df['Cornering Grip Factor'] = [i for i in df['Combined G'] if df['G Force Lat'] > 0.5]
-    # df['Cornering Grip Factor'] = np.where(df['G Force Lat'] > 0.5, df['Combined G'], np.nan)
+    df['Overall Grip Factor'] = np.where(df['Combined G'] > 1, df['Combined G'], np.nan)   # ok
+    df['Cornering Grip Factor'] = np.where(df['G Force Lat'] > 0.5, df['Combined G'], np.nan)   # ok
     df['Braking Grip Factor'] = np.where(df['G Force Long'] < -1, df['Combined G'], np.nan)
-    # df['Traction Grip Factor']= np.where([df['G Force Lat'] > 0.5 & df['G Force Long'] > 0], df['Combined G'], np.nan)
+    df['Traction Grip Factor'] = np.where(
+        (df['G Force Lat'] > 0.5) & (df['G Force Long'] > 0), df['Combined G'], np.nan
+    )
+    df['Aero Grip Factor'] = np.where((df['G Force Lat'] > 1) & (df['Ground Speed'] > 120), df['Combined G'], np.nan)
+
+    '''
     print(df['Overall Grip Factor'].mean())
     print(df['Cornering Grip Factor'].mean())
+    print(df['Braking Grip Factor'].mean())
+    print(df['Traction Grip Factor'].mean())
+    print(df['Aero Grip Factor'].mean())
+    '''
+
+    '''
     # # This part works (But I want columns to apply pivot table all at once)
 
     overall_grip_factor = df[(df['Combined G'] > 1)]['Combined G'].mean()
@@ -64,23 +73,22 @@ def main():
     print(braking_grip_factor)
     print(traction_grip_factor)
     print(aero_grip_factor)
+    '''
 
-    lap_num = [0]
+    # # Counting Laps
+    lap_num = [0]   # Putting first lap as lap 0
 
-    for index in range(1, len(df['Lap Distance'])):
-        # lap_num_act = lap_num[index]
+    for index in range(1, len(df['Lap Distance'])):    # If the previous lap distance is bigger than this, count 1 lap
         lap_num_prv = lap_num[index - 1]
-        # import pdb; pdb.set_trace()
         if df['Lap Distance'][df.index[index - 1]] > df['Lap Distance'][df.index[index]]:
             lap_num.append(lap_num_prv + 1)
         else:
             lap_num.append(lap_num_prv)
 
-    df['Lap Distance'] = lap_num
+    df['Lap Number'] = lap_num
 
-    # df['Aero Grip Factor'] =
-    # print(df.loc[df['Cornering Grip Factor'] == np.nan])
-    # print(df.loc[df['Overall Grip Factor'] == True])
+    result = df.groupby(['Lap Number']).mean()
+    print(result)
 
 
 if __name__ == '__main__':
