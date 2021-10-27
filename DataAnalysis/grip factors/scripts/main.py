@@ -12,15 +12,12 @@
 # Calculating and plotting grip factors
 
 # # Importing Libraries
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-from pathlib import Path
-import plotly.express as px
 import SM_grip_factor as smgf
 
+
 def main():
-    smgf.grip_factor_tire_pressure()
+    outings_path = r'C:\Users\jgbal\Github\speedmetrica\DataAnalysis\grip factors\csv outings\londrina'
+    smgf.grip_factor_tire_pressure(outings_path)
 
 
 if __name__ == '__main__':
