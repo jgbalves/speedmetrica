@@ -15,9 +15,8 @@
 import os
 import pandas as pd
 import numpy as np
-from pathlib import Path
 import matplotlib.pyplot as plt
-import plotly.express as px
+from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 
 
@@ -28,7 +27,15 @@ def grip_factor_tire_pressure(path):
     outing_names = os.listdir(path)    # Fetch all files in path
     outing_names = [file for file in outing_names if '.csv' in file]    # Filtering the .csv
 
-    fig = go.Figure()
+    # # Creating plot figure
+    fig = make_subplots(
+        rows=2, cols=2,
+        subplot_titles=("Tire Press - FL", "Tire Press - FR", "Tire Press - RL", "Tire Press - RR")
+    )
+    fig.update_layout(title='Corner Grip Factor over Tyre Pressures',
+                      plot_bgcolor='rgb(230, 230,230)',
+                      showlegend=True)
+
     # # loop for all outings
     for file in outing_names:
 
@@ -104,10 +111,40 @@ def grip_factor_tire_pressure(path):
 
         print(df2)
 
-        fig.add_trace(go.Scatter(
-            x=df2['Tire Press - RR'],
-            y=df2['Cornering Grip Factor'],
-            mode='markers')
+        fig.add_trace(
+            go.Scatter(
+                x=df2['Tire Press - FL'],
+                y=df2['Cornering Grip Factor'],
+                mode='lines+markers',
+                name=f'{file}'),
+            row=1, col=1
+        )
+
+        fig.add_trace(
+            go.Scatter(
+                x=df2['Tire Press - FR'],
+                y=df2['Cornering Grip Factor'],
+                mode='lines+markers',
+                name=f'{file}'),
+            row=1, col=2
+        )
+
+        fig.add_trace(
+            go.Scatter(
+                x=df2['Tire Press - RL'],
+                y=df2['Cornering Grip Factor'],
+                mode='lines+markers',
+                name=f'{file}'),
+            row=2, col=1
+        )
+
+        fig.add_trace(
+            go.Scatter(
+                x=df2['Tire Press - RR'],
+                y=df2['Cornering Grip Factor'],
+                mode='lines+markers',
+                name=f'{file}'),
+            row=2, col=2
         )
 
         # plt.scatter(df2['Tire Press - RR'], df2['Cornering Grip Factor']) (work with matplotlib)
