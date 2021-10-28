@@ -152,3 +152,6 @@ def grip_factor_tire_pressure(path):
     fig.show()    # Work with plotly
     # plt.show()    # Work with matplotlib
 
+
+def aero_factor_wing_pos(path):
+    pass
