@@ -185,10 +185,12 @@ def aero_factor_wing_pos(path):
         outing_csv = f'{outing_path}\{outing_csv}'
         outing = pd.read_csv(outing_csv, sep=',', low_memory=False, skiprows=13)
         df = outing
-        import pdb; pdb.set_trace()
-        # wing_pos = pd.read_csv(outing_csv, sep=',', low_memory=False, skiprows=4, nrows=5)
-        # wing_pos = wing_pos.iloc[4]['MoTeC CSV']
         # import pdb; pdb.set_trace()
+        wing_pos = pd.read_csv(outing_csv, sep=',', low_memory=False, nrows=5)
+        wing_pos = wing_pos.iloc[4]['MoTeC CSV']
+        wing_pos = wing_pos.replace("'", '"')
+        wing_pos = json.loads(wing_pos)
+        import pdb; pdb.set_trace()
 
         # # Removing motec double header
         df = df.drop([0], axis=0)
