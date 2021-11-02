@@ -12,12 +12,14 @@
 # Calculating and plotting grip factors
 
 # # Importing Libraries
-import SM_grip_factor as smgf
+import SM_grip_factor as SMgf
 
 
 def main():
     outings_path = r'C:\Users\jgbal\Github\speedmetrica\DataAnalysis\grip factors\csv outings\londrina'
-    smgf.grip_factor_tire_pressure(outings_path)
+    # SMgf.grip_factor_tire_pressure(outings_path)
+    # SMgf.grip_factor_tire_pressure(outings_path)
+    SMgf.aero_factor_wing_pos(outings_path)
 
 
 if __name__ == '__main__':
