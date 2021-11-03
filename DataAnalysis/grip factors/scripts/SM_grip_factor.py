@@ -16,7 +16,7 @@ import os
 import pandas as pd
 import numpy as np
 import json
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 
@@ -171,10 +171,9 @@ def aero_factor_wing_pos(path):
 
     # # Creating plot figure
     fig = make_subplots(
-        rows=1, cols=1,
-        subplot_titles="Tire Press - FL"
+        rows=1, cols=1
     )
-    fig.update_layout(title='Aero Grip Factor Wing Position',
+    fig.update_layout(title='Aero Grip Factor x Wing Position',
                       plot_bgcolor='rgb(230, 230,230)',
                       showlegend=True)
 
@@ -186,11 +185,11 @@ def aero_factor_wing_pos(path):
         outing = pd.read_csv(outing_csv, sep=',', low_memory=False, skiprows=13)
         df = outing
         # import pdb; pdb.set_trace()
-        wing_pos = pd.read_csv(outing_csv, sep=',', low_memory=False, nrows=5)
-        wing_pos = wing_pos.iloc[4]['MoTeC CSV']
-        wing_pos = wing_pos.replace("'", '"')
-        wing_pos = json.loads(wing_pos)
-        import pdb; pdb.set_trace()
+        car_setup = pd.read_csv(outing_csv, sep=',', low_memory=False, nrows=5)
+        car_setup = car_setup.iloc[4]['MoTeC CSV']
+        car_setup = car_setup.replace("'", '"')
+        car_setup = json.loads(car_setup)
+        wing_pos = (car_setup['A'])
 
         # # Removing motec double header
         df = df.drop([0], axis=0)
@@ -201,15 +200,14 @@ def aero_factor_wing_pos(path):
         df['G Force Long'] = pd.to_numeric(df['G Force Long'], downcast='float')
         df['Ground Speed'] = pd.to_numeric(df['Ground Speed'], downcast='float')
         df['Lap Distance'] = pd.to_numeric(df['Lap Distance'], downcast='float')
-        df['Tire Press - FL'] = pd.to_numeric(df['Tire Press - FL'], downcast='float')
-        df['Tire Press - FR'] = pd.to_numeric(df['Tire Press - FR'], downcast='float')
-        df['Tire Press - RL'] = pd.to_numeric(df['Tire Press - RL'], downcast='float')
-        df['Tire Press - RR'] = pd.to_numeric(df['Tire Press - RR'], downcast='float')
 
         # # Cleaning data
         clean1 = df['G Force Long'] >= -2   # Due to pressing ESC in AMS the long G gets noise
         clean2 = df['G Force Long'] <= 2
         df = df[clean1 & clean2]
+
+        # # Adding wing position as column
+        df['Wing Position'] = wing_pos
 
         # # Conditional grip factors creation
         df['Combined G'] = np.sqrt(df['G Force Lat'] ** 2 + df['G Force Long'] ** 2)    # ok
@@ -222,14 +220,6 @@ def aero_factor_wing_pos(path):
             (df['G Force Lat'] > 1) & (df['Ground Speed'] > 120), df['Combined G'], np.nan)
         df['Trail Breaking Grip Factor'] = np.where(
             (df['G Force Long'] > 1) & (df['G Force Lat'] > 1), df['Combined G'], np.nan)
-
-        '''
-        print(df['Overall Grip Factor'].mean())
-        print(df['Cornering Grip Factor'].mean())
-        print(df['Braking Grip Factor'].mean())
-        print(df['Traction Grip Factor'].mean())
-        print(df['Aero Grip Factor'].mean())
-        '''
 
         # # Counting Laps
         lap_num = [0]   # Putting first lap as lap 0
@@ -248,17 +238,19 @@ def aero_factor_wing_pos(path):
             'Cornering Grip Factor',
             'Braking Grip Factor',
             'Traction Grip Factor',
-            'Aero Grip Factor',
-            'Tire Press - FL',
-            'Tire Press - FR',
-            'Tire Press - RL',
-            'Tire Press - RR'
+            'Aero Grip Factor'
         ]
 
         df2 = df.groupby(['Lap Number'])[columns].mean()
 
         print(df2)
 
-
-
-
+        fig.add_trace(
+            go.Scatter(
+                x=df['Wing Position'],
+                y=df2['Aero Grip Factor'],
+                mode='markers',
+                name=f'Wing Position {wing_pos} {file}'),
+            row=1, col=1
+        )
+    fig.show()    # Work with plotly
