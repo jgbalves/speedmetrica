@@ -180,16 +180,16 @@ def aero_factor_wing_pos(path):
     # # loop for all outings
     for file in outing_names:
 
+        # # Loading the data
         outing_csv = file
         outing_csv = f'{outing_path}\{outing_csv}'
         outing = pd.read_csv(outing_csv, sep=',', low_memory=False, skiprows=13)
         df = outing
-        # import pdb; pdb.set_trace()
         car_setup = pd.read_csv(outing_csv, sep=',', low_memory=False, nrows=5)
         car_setup = car_setup.iloc[4]['MoTeC CSV']
-        car_setup = car_setup.replace("'", '"')
-        car_setup = json.loads(car_setup)
-        wing_pos = (car_setup['A'])
+        car_setup = car_setup.replace("'", '"')    # Converting single to double quote to convert in dict
+        car_setup = json.loads(car_setup)    # Converting in dict
+        wing_pos = (car_setup['A'])    # Getting wing position
 
         # # Removing motec double header
         df = df.drop([0], axis=0)
@@ -206,7 +206,7 @@ def aero_factor_wing_pos(path):
         clean2 = df['G Force Long'] <= 2
         df = df[clean1 & clean2]
 
-        # # Adding wing position as column
+        # # Adding wing position as a column
         df['Wing Position'] = wing_pos
 
         # # Conditional grip factors creation
