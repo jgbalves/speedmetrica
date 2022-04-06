@@ -12,11 +12,12 @@
 ''' StreamLit Website main code '''
 
 # # Importing Libraries
+import sqlite3
+import requests
 import streamlit as st
 from streamlit_lottie import st_lottie
 from PIL import Image
-import requests
-import sqlite3
+
 
 # Connector DB Functions
 conn = sqlite3.connect('data.db')
