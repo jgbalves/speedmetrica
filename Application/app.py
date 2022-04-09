@@ -41,6 +41,7 @@ def view_all_notes():
     return data
 
 def view_all_titles():
+    '''To view all blog titles'''
     c.execute('SELECT DISTINCT title FROM blogtable')
     data = c.fetchall()
     return data
