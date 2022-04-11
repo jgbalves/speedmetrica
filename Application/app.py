@@ -60,7 +60,7 @@ def main():
         with st.container():    # Optional
             st.subheader('Hi, I am Joao Alves, and this is:')
             st.title('SpeedMetrica')
-            st.write('my project about Data Analysis in motorsports')
+            st.write('my project about Data Analysis in motorsport')
 
         # --- What I do ---
         with st.container():
@@ -126,11 +126,6 @@ def main():
                 st.markdown(contact_form, unsafe_allow_html=True)
             with right_column:
                 st.empty()
-
-    elif selected_page == 'F1 Analysis':
-        # --- Header section ---
-        with st.container():
-            st.subheader('Coming soon!')
 
 if __name__ == '__main__':
     main()
