@@ -9,98 +9,30 @@
 # #                           www.speedmetrica.com
 # #
 # # ==============================================================================
-''' StreamLit Website main code '''
+''' StreamLit webapp main code '''
 
 # # Importing Libraries random comment
-import sqlite3
 import requests
 import streamlit as st
 from streamlit_lottie import st_lottie
 from PIL import Image
 
 
-# Connector DB Functions
-conn = sqlite3.connect('data.db')
-c = conn.cursor()
-
-# Blog DB Functions
-
-def create_table():
-    '''Creating a db table inside the sqlite'''
-    c.execute('CREATE TABLE IF NOT EXISTS blogtable(author TEXT,title TEXT,text TEXT,postdate DATE)')
-
-def add_data(author,title,text,postdate):
-    '''Add data to the db table'''
-    c.execute('INSERT INTO blogtable(author,title,text,postdate) VALUES (?,?,?,?)',(author,title,text,postdate))
-    conn.commit()
-
-def view_all_notes():
-    '''To view all blog notes'''
-    c.execute('SELECT * FROM blogtable')
-    data = c.fetchall()
-    return data
-
-def view_all_titles():
-    '''To view all blog titles'''
-    c.execute('SELECT DISTINCT title FROM blogtable')
-    data = c.fetchall()
-    return data
-
-# Blog Layout Templates
-
-html_temp = """
-<div style="background-color:{};padding:10px;border-radius:10px">
-<h1 style="color:{};text-align:center;">Simple Blog </h1>
-</div>
-"""
-title_temp ="""
-<div style="background-color:#464e5f;padding:10px;border-radius:10px;margin:10px;">
-<h4 style="color:white;text-align:center;">{}</h1>
-<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" style="vertical-align: middle;float:left;width: 50px;height: 50px;border-radius: 50%;" >
-<h6>Author:{}</h6>
-<br/>
-<br/> 
-<p style="text-align:justify">{}</p>
-</div>
-"""
-article_temp ="""
-<div style="background-color:#464e5f;padding:10px;border-radius:5px;margin:10px;">
-<h4 style="color:white;text-align:center;">{}</h1>
-<h6>Author:{}</h6> 
-<h6>Post Date: {}</h6>
-<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" style="vertical-align: middle;width: 50px;height: 50px;border-radius: 50%;" >
-<br/>
-<br/>
-<p style="text-align:justify">{}</p>
-</div>
-"""
-head_message_temp ="""
-<div style="background-color:#464e5f;padding:10px;border-radius:5px;margin:10px;">
-<h4 style="color:white;text-align:center;">{}</h1>
-<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" style="vertical-align: middle;float:left;width: 50px;height: 50px;border-radius: 50%;">
-<h6>Author:{}</h6> 
-<h6>Post Date: {}</h6> 
-</div>
-"""
-full_message_temp ="""
-<div style="background-color:silver;overflow-x: auto; padding:10px;border-radius:5px;margin:10px;">
-<p style="text-align:justify;color:black;padding:10px">{}</p>
-</div>
-"""
-
-
 def main():
     '''Main function'''
     # --- General app configuration ---
-    st.set_page_config(page_title='SpeedMetrica', page_icon=':chart:', layout='wide')
+    favicon = Image.open("images/chapado 1.PNG")
+    st.set_page_config(page_title='SpeedMetrica', page_icon=favicon, layout='wide')
 
     # --- Side Menu Configuration ---
     st.sidebar.title("Menu")
-    menu = ['Home', 'Blog', 'Add Post', 'Search', 'Manage']
+    menu = ['Home', 'F1 Analysis']
+    # menu = ['Home', 'F1 Analysis', 'Blog', 'Data Analysis', 'Lap Time Simulation']
     selected_page = st.sidebar.selectbox(
         '',
         menu
     )
+
 
     # --- Home Page Configuration ---
     if selected_page == 'Home':
@@ -121,15 +53,14 @@ def main():
         lottie_coding = load_lottieurl(
             "https://assets9.lottiefiles.com/private_files/lf30_kmn9juoo.json"
         )
-        img_contact_form = Image.open("images/ayrton cena - Copia (2).jfif")
-        img_lottie_animation = Image.open("images/ilxl00419yv51.jpg")
+        img_data_analysis = Image.open("images/data_analysis.jpg")
+
 
         # --- Header section ---
         with st.container():    # Optional
-            st.subheader('Hi, I am Joao Alves')
-            st.title('A Brazilian Data analyst')
-            st.write('I am passionate about motorsport and metrics')
-            st.write('[Learn More](https://speedmetrica.com/)')
+            st.subheader('Hi, I am Joao Alves, and this is:')
+            st.title('SpeedMetrica')
+            st.write('my project about Data Analysis in motorsports')
 
         # --- What I do ---
         with st.container():
@@ -140,13 +71,14 @@ def main():
                 st.write("##")
                 st.write(
                     """
-                    Some lines to test:
-                    - Topic structures and how we see them in the website
-                    - Topic structures and how we see them in the website
-                    - Topic structures and how we see them in the website
+                    - Data Analysis
+                    - Race Engineering
+                    - Amateur & Sim Racing
                     """
                 )
-                st.write("[youtube](https://www.youtube.com/channel/UCVb8NLqszxTuWQJCNJ7DSVQ)")
+                st.write(
+                    "[Check it out!](https://www.youtube.com/channel/UCVb8NLqszxTuWQJCNJ7DSVQ)"
+                )
             with right_column:
                 st_lottie(lottie_coding, height=300, key='coding')
 
@@ -157,28 +89,20 @@ def main():
             st.write('##')
             image_column, text_column = st.columns((1, 2))
             with image_column:
-                st.image(img_lottie_animation)
+                st.image(img_data_analysis)
             with text_column:
-                st.subheader("Watch a some sim laps and karting laps")
+                st.subheader("Check it out the left menu a few projects!")
                 st.write(
                     """
-                    Watch and learn how to guarantee a basic lap in some popular circuits
-                    """
-                )
-                st.markdown("[Watch Video](https://www.youtube.com/watch?v=a7k0BnQnw90)")
+                    On going:
+                    - Formula 1 lap analysis
 
-        with st.container():
-            image_column, text_column = st.columns((1, 2))
-            with image_column:
-                st.image(img_contact_form)
-            with text_column:
-                st.subheader("Lets test some diff image formats")
-                st.write(
-                    """
-                    We will se if jlif format can work on
+                    Coming up:
+                    - Driver KPIs
+                    - Point Mass Lap Time Simulation
                     """
                 )
-                st.markdown("[Watch Video](https://www.youtube.com/watch?v=a7k0BnQnw90)")
+
 
         # --- Contact Us ---
         with st.container():
@@ -202,50 +126,11 @@ def main():
                 st.markdown(contact_form, unsafe_allow_html=True)
             with right_column:
                 st.empty()
-        # --- Blog Test --- (ERASE LATER)
+
+    elif selected_page == 'F1 Analysis':
+        # --- Header section ---
         with st.container():
-            st.write("---")
-            st.header("Blog Results:")
-            st.write("##")
-            result = view_all_notes()
-            # st.write(result)
-            for i in result:
-                b_author = i[0]
-                b_title = i[1]
-                b_article = i[2]
-                b_post_date = i[3]
-                st.markdown(title_temp.format(b_title, b_author, b_article, b_post_date), unsafe_allow_html=True)
-
-
-
-
-
-    # --- Blog Page ---
-    elif selected_page == 'Blog':
-        st.subheader('Blog')
-
-        postlist = st.sidebar.selectbox('View posts',['Post 1', 'Post 2'])
-
-    # --- Add Post ---
-    elif selected_page == 'Add Post':
-        st.subheader('Add Post')
-        create_table()
-        blog_author = st.text_input('Enter Author Name', max_chars=50)
-        blog_title = st.text_input('Enter Post Title')
-        blog_text = st.text_area('Post Article Here', height=200)
-        blog_post_date = st.date_input('Date')
-        if st.button('Add'):
-            add_data(blog_author, blog_title, blog_text, blog_post_date)
-            st.success('Post:{} saved'.format(blog_title))
-
-
-    # --- Search ---
-    elif selected_page == 'Search':
-        st.subheader('Search')
-
-    # --- Manage ---
-    elif selected_page == 'Manage':
-        st.subheader('Manage')
+            st.subheader('Coming soon!')
 
 if __name__ == '__main__':
     main()
