@@ -71,47 +71,47 @@ full_message_temp ="""
 
 
 
-        # --- Blog Test ---
-        with st.container():
-            st.write("---")
-            st.header("Blog Results:")
-            st.write("##")
-            result = view_all_notes()
-            # st.write(result)
-            for i in result:
-                b_author = i[0]
-                b_title = i[1]
-                b_article = i[2]
-                b_post_date = i[3]
-                st.markdown(title_temp.format(b_title, b_author, b_article, b_post_date), unsafe_allow_html=True)
+# --- Blog Test ---
+with st.container():
+    st.write("---")
+    st.header("Blog Results:")
+    st.write("##")
+    result = view_all_notes()
+    # st.write(result)
+    for i in result:
+        b_author = i[0]
+        b_title = i[1]
+        b_article = i[2]
+        b_post_date = i[3]
+        st.markdown(title_temp.format(b_title, b_author, b_article, b_post_date), unsafe_allow_html=True)
 
 
 
 
 
-    # --- Blog Page ---
-    elif selected_page == 'Blog':
-        st.subheader('Blog')
+# --- Blog Page ---
+if selected_page == 'Blog':
+    st.subheader('Blog')
 
-        postlist = st.sidebar.selectbox('View posts',['Post 1', 'Post 2'])
+    postlist = st.sidebar.selectbox('View posts',['Post 1', 'Post 2'])
 
-    # --- Add Post ---
-    elif selected_page == 'Add Post':
-        st.subheader('Add Post')
-        create_table()
-        blog_author = st.text_input('Enter Author Name', max_chars=50)
-        blog_title = st.text_input('Enter Post Title')
-        blog_text = st.text_area('Post Article Here', height=200)
-        blog_post_date = st.date_input('Date')
-        if st.button('Add'):
-            add_data(blog_author, blog_title, blog_text, blog_post_date)
-            st.success('Post:{} saved'.format(blog_title))
+# --- Add Post ---
+elif selected_page == 'Add Post':
+    st.subheader('Add Post')
+    create_table()
+    blog_author = st.text_input('Enter Author Name', max_chars=50)
+    blog_title = st.text_input('Enter Post Title')
+    blog_text = st.text_area('Post Article Here', height=200)
+    blog_post_date = st.date_input('Date')
+    if st.button('Add'):
+        add_data(blog_author, blog_title, blog_text, blog_post_date)
+        st.success('Post:{} saved'.format(blog_title))
 
 
-    # --- Search ---
-    elif selected_page == 'Search':
-        st.subheader('Search')
+# --- Search ---
+elif selected_page == 'Search':
+    st.subheader('Search')
 
-    # --- Manage ---
-    elif selected_page == 'Manage':
-        st.subheader('Manage')
+# --- Manage ---
+elif selected_page == 'Manage':
+    st.subheader('Manage')

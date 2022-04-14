@@ -16,6 +16,7 @@ import requests
 import streamlit as st
 from streamlit_lottie import st_lottie
 from PIL import Image
+from f1_analysis import f1_analysis as f1
 
 
 def main():
@@ -126,6 +127,12 @@ def main():
                 st.markdown(contact_form, unsafe_allow_html=True)
             with right_column:
                 st.empty()
+
+    elif selected_page == 'F1 Analysis':
+        # --- Header section ---
+        fig = f1.get_f1_plot()
+        st.plotly_chart(fig, use_container_width=True)
+
 
 if __name__ == '__main__':
     main()
