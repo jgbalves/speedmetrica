@@ -26,7 +26,7 @@ def main():
     st.set_page_config(page_title='SpeedMetrica', page_icon=favicon, layout='wide')
 
     # --- Side Menu Configuration ---
-    st.sidebar.title("Menu")
+    st.sidebar.title("Page")
     menu = ['Home', 'F1 Analysis']
     # menu = ['Home', 'F1 Analysis', 'Blog', 'Data Analysis', 'Lap Time Simulation']
     selected_page = st.sidebar.selectbox(
@@ -129,8 +129,25 @@ def main():
                 st.empty()
 
     elif selected_page == 'F1 Analysis':
+        # --- Sub Menu ---
+        st.sidebar.title("Driver 1")
+        drivers = ['LEC', 'VER']
+        tracks = ['rack1']
+        selected_driver_1 = st.sidebar.selectbox(
+        'Select the first driver',
+        drivers
+        )
+        st.sidebar.title("Driver 2")
+        selected_driver_2 = st.sidebar.selectbox(
+        'Select the second driver',
+        drivers
+        )
+
+
         # --- Header section ---
-        fig = f1.get_f1_plot()
+        driver1 = 'LEC'
+        driver2 = 'VER'
+        fig = f1.get_f1_plot(2019, 'Monza', 'Q', selected_driver_1, selected_driver_2)
         st.plotly_chart(fig, use_container_width=True)
 
 
