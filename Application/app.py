@@ -129,25 +129,33 @@ def main():
                 st.empty()
 
     elif selected_page == 'F1 Analysis':
-        # --- Sub Menu ---
-        st.sidebar.title("Driver 1")
-        drivers = ['LEC', 'VER']
-        tracks = ['rack1']
-        selected_driver_1 = st.sidebar.selectbox(
-        'Select the first driver',
-        drivers
+        # --- Top Menu ---
+        years = [2022, 2021, 2020, 2019]
+        event = ['Monza']
+        session = ['FP1', 'FP2', 'FP3', 'Q', 'SQ', 'R']
+        drivers = ['LEC', 'VER', 'HAM', 'SAI']
+
+        dropdown_year = st.selectbox(
+            'Year',
+            years
         )
-        st.sidebar.title("Driver 2")
-        selected_driver_2 = st.sidebar.selectbox(
-        'Select the second driver',
+        dropdown_event = st.selectbox(
+            'Event',
+            event
+        )
+        dropdown_session = st.selectbox(
+            'Session',
+            session
+        )
+
+        selected_driver = st.multiselect(
+        'Driver',
         drivers
         )
 
 
         # --- Header section ---
-        driver1 = 'LEC'
-        driver2 = 'VER'
-        fig = f1.get_f1_plot(2019, 'Monza', 'Q', selected_driver_1, selected_driver_2)
+        fig = f1.get_f1_plot(dropdown_year, dropdown_event, dropdown_session, selected_driver)
         st.plotly_chart(fig, use_container_width=True)
 
 
