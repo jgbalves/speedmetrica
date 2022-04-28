@@ -135,28 +135,39 @@ def main():
         session = ['FP1', 'FP2', 'FP3', 'Q', 'SQ', 'R']
         drivers = ['LEC', 'VER', 'HAM', 'SAI']
 
-        dropdown_year = st.selectbox(
-            'Year',
-            years
-        )
-        dropdown_event = st.selectbox(
-            'Event',
-            event
-        )
-        dropdown_session = st.selectbox(
-            'Session',
-            session
-        )
-
-        selected_driver = st.multiselect(
-        'Driver',
-        drivers
-        )
+        with st.container():    # fast lap filters
+            year_column, event_column, session_column, driver_column = st.columns(4)
+            with year_column:
+                dropdown_year = st.selectbox(
+                    'Year',
+                    years
+                )
+            with event_column:
+                dropdown_event = st.selectbox(
+                    'Event',
+                    event
+                )
+            with session_column:
+                dropdown_session = st.selectbox(
+                    'Session',
+                    session
+                )
+            with driver_column:
+                selected_driver = st.multiselect(
+                'Driver',
+                drivers
+                )
 
 
         # --- Header section ---
-        fig = f1.get_f1_plot(dropdown_year, dropdown_event, dropdown_session, selected_driver)
-        st.plotly_chart(fig, use_container_width=True)
+        speed = f1.speed_plot(dropdown_year, dropdown_event, dropdown_session, selected_driver)
+        throttle = f1.throttle_plot(dropdown_year, dropdown_event, dropdown_session, selected_driver)
+        delta = f1.delta_plot(dropdown_year, dropdown_event, dropdown_session, selected_driver)
+        with st.container():
+            st.plotly_chart(speed, use_container_width=True)
+            st.plotly_chart(throttle, use_container_width=True)
+            st.plotly_chart(delta, use_container_width=True)
+
 
 
 if __name__ == '__main__':
