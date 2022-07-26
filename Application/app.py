@@ -130,8 +130,7 @@ def main():
 
     elif selected_page == 'F1 Analysis':
         # --- Top Menu ---
-        years = [2022, 2021, 2020, 2019]
-        event = ['Monza']
+        years = f1.populate_year()
         session = ['FP1', 'FP2', 'FP3', 'Q', 'SQ', 'R']
         drivers = ['LEC', 'VER', 'HAM', 'SAI']
 
@@ -145,28 +144,24 @@ def main():
             with event_column:
                 dropdown_event = st.selectbox(
                     'Event',
-                    event
+                    f1.populate_event(dropdown_year)
                 )
             with session_column:
                 dropdown_session = st.selectbox(
                     'Session',
-                    session
+                    f1.populate_session(dropdown_year, dropdown_event)
                 )
             with driver_column:
                 selected_driver = st.multiselect(
                 'Driver',
-                drivers
+                f1.populate_driver(dropdown_year, dropdown_event, dropdown_session)
                 )
 
-
         # --- Header section ---
-        speed = f1.speed_plot(dropdown_year, dropdown_event, dropdown_session, selected_driver)
-        throttle = f1.throttle_plot(dropdown_year, dropdown_event, dropdown_session, selected_driver)
-        delta = f1.delta_plot(dropdown_year, dropdown_event, dropdown_session, selected_driver)
+        plot = f1.resulting_plot(dropdown_year, dropdown_event, dropdown_session, selected_driver)
         with st.container():
-            st.plotly_chart(speed, use_container_width=True)
-            st.plotly_chart(throttle, use_container_width=True)
-            st.plotly_chart(delta, use_container_width=True)
+            st.plotly_chart(plot, use_container_width=True)
+
 
 
 
