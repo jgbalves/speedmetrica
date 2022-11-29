@@ -1,7 +1,20 @@
+# # ==============================================================================
+# #
+# #   _____ ____  ________________     __  ___________________  _____________
+# #  / ___// __ \/ ____/ ____/ __ \   /  |/  / ____/_  __/ __ \/  _/ ____/   |
+# #  \__ \/ /_/ / __/ / __/ / / / /  / /|_/ / __/   / / / /_/ // // /   / /| |
+# # ___/ / ____/ /___/ /___/ /_/ /  / /  / / /___  / / / _, _// // /___/ ___ |
+# #/____/_/   /_____/_____/_____/  /_/  /_/_____/ /_/ /_/ |_/___/\____/_/  |_|
+# #
+# #                           www.speedmetrica.com
+# #
+# # ==============================================================================
+# # Formula 1 Analysis at the page speedmetrica.com
+
+# # Importing libraries
 import fastf1 as ff1
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
-import pandas as pd
 
 
 def populate_year():
@@ -11,13 +24,8 @@ def populate_event(year):
     schedule = ff1.get_event_schedule(year)
     return [event for event in schedule['Location']]
 
-def populate_session(year, location):
-    schedule = ff1.get_event_schedule(year)
-    schedule = schedule[schedule.Location == f'{location}']
-    sessions = list(schedule)
-    sessions = [t for t in sessions if (t.startswith('Session') and not  t.endswith('Date'))]
-    sessions = schedule[(sessions)].values.tolist().pop()
-    return sessions
+def populate_session():
+    return ['Practice 1', 'Practice 2', 'Practice 3', 'Qualifying', 'Sprint', 'Race']
 
 def populate_driver(year, location, chosen_session):
     session = ff1.get_session(year, location, chosen_session)
@@ -51,11 +59,21 @@ def resulting_plot(year, track, chosen_session, driver_list):
     fig = make_subplots(
     rows=3,
     cols=1,
-    subplot_titles=('Time Delta [s]', 'Speed [km/h]', 'Throttle [%]'))
+    subplot_titles=(),
+    vertical_spacing=0.01)
+    
+    fig.update_xaxes(showspikes = True,
+    spikemode  = 'across',
+    spikesnap = 'cursor',
+    showline=True,
+    showgrid=True,
+    )
+
     fig.update_layout(
         title='Fastest Lap Comparison',
         plot_bgcolor='rgb(230, 230,230)',
-        showlegend=True)
+        showlegend=True,
+        hovermode  = 'x unified')
     for driver in driver_list:
         fig.add_trace(
             go.Scatter(
@@ -86,4 +104,8 @@ def resulting_plot(year, track, chosen_session, driver_list):
                 name=f'{driver}'),
             row=3,
             col=1)
+    fig['layout']['yaxis']['title']='Time Delta [s]'
+    fig['layout']['yaxis2']['title']='Speed [km/h]'
+    fig['layout']['yaxis3']['title']='Throttle [%]'
+    fig.update_traces(xaxis='x3')
     return fig
