@@ -81,8 +81,8 @@ def grip_factor_tire_pressure(path):
             (df['G Force Lat'] > 0.5) & (df['G Force Long'] < 0), df['Combined G'], np.nan)
         df['Aero Grip Factor'] = np.where(
             (df['G Force Lat'] > 1) & (df['Ground Speed'] > 120), df['Combined G'], np.nan)
-        df['Trail Breaking Grip Factor'] = np.where(
-            (df['G Force Long'] > 1) & (df['G Force Lat'] > 1), df['Combined G'], np.nan)
+        df['Trail Braking Grip Factor'] = np.where(
+            (df['G Force Lat'] > 0.5) & (df['G Force Long'] > 0), df['Combined G'], np.nan)
 
         '''
         print(df['Overall Grip Factor'].mean())
