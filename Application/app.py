@@ -23,7 +23,7 @@ from speedmetrica import speedmetrica as sm
 def main():
     '''Main function'''
     # --- General app configuration ---
-    favicon = Image.open("../images/chapado 1.PNG")
+    #favicon = Image.open("../images/chapado 1.PNG")
     st.set_page_config(page_title='SpeedMetrica', page_icon='https://raw.githubusercontent.com/jgbalves/speedmetrica/master/Application/images/chapado%201.PNG', layout='wide')
 
     # --- Side Menu Configuration ---
