@@ -23,8 +23,8 @@ from speedmetrica import speedmetrica as sm
 def main():
     '''Main function'''
     # --- General app configuration ---
-    #favicon = Image.open("../images/chapado 1.PNG")
-    st.set_page_config(page_title='SpeedMetrica', page_icon='https://raw.githubusercontent.com/jgbalves/speedmetrica/master/Application/images/chapado%201.PNG', layout='wide')
+    favicon = 'https://raw.githubusercontent.com/jgbalves/speedmetrica/master/Application/images/chapado%201.PNG'
+    st.set_page_config(page_title='SpeedMetrica', page_icon=favicon, layout='wide')
 
     # --- Side Menu Configuration ---
     st.sidebar.title("Page")
@@ -46,7 +46,7 @@ def main():
             return r.json()
 
         def local_css(file_name):
-            with open(file_name, encoding='UTF-8') as f:
+            with open(file_name) as f:
                 st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
         local_css("style/style.css")
