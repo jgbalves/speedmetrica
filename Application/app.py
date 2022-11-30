@@ -24,7 +24,7 @@ from pathlib import Path
 def main():
     '''Main function'''
     # --- General app configuration ---
-    favicon = 'https://raw.githubusercontent.com/jgbalves/speedmetrica/master/Application/images/chapado%201.PNG'
+    favicon = 'Application\images\chapado 1.PNG'
     st.set_page_config(page_title='SpeedMetrica', page_icon=favicon, layout='wide')
 
     # --- Side Menu Configuration ---
