@@ -18,7 +18,6 @@ from streamlit_lottie import st_lottie
 from PIL import Image
 from f1_analysis import f1_analysis as f1
 from speedmetrica import speedmetrica as sm
-from pathlib import Path
 
 
 def main():
@@ -50,13 +49,13 @@ def main():
             with open(file_name) as f:
                 st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
-        local_css(Path(__file__).parent / "style/style.css")
+        local_css("Application/style/style.css")
 
         # --- Load Assets ---
         lottie_coding = load_lottieurl(
             "https://assets9.lottiefiles.com/private_files/lf30_kmn9juoo.json"
         )
-        img_data_analysis = Image.open(Path(__file__).parent / "images/data_analysis.jpg")
+        img_data_analysis = Image.open("Application/images/data_analysis.jpg")
 
 
         # --- Header section ---
