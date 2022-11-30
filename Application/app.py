@@ -56,7 +56,7 @@ def main():
         lottie_coding = load_lottieurl(
             "https://assets9.lottiefiles.com/private_files/lf30_kmn9juoo.json"
         )
-        img_data_analysis = Image.open(r"images/data_analysis.jpg")
+        img_data_analysis = Image.open(Path(__file__).parent / "images/data_analysis.jpg")
 
 
         # --- Header section ---
