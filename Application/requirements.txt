@@ -4,3 +4,4 @@ streamlit_lottie==0.0.3
 streamlit>=1.11.1
 fastf1==2.2.4
 plotly==5.3.1
+Pathlib>=1.0.1
